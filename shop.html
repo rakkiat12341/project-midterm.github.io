@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- start top nav -->
+    <nav class="topnav">
+        <div class="topnav_container">
+            <div class="topnav_contect">
+                <ul>
+                    <li><i class="fa-solid fa-envelope"></i> test@gmail.com</li>
+                    <li>
+                    <li><i class="fa-solid fa-phone"></i> 02-245-556</li>
+                </ul>
+            </div>
+            <div class="topnav_social-contect">
+                <ul>
+                    <li><a href="#"><i class="fa-brands fa-facebook-f" style="color:#cfd6e1 ;"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram" style="color:#cfd6e1 ;"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-x-twitter" style="color:#cfd6e1 ;"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-link" style="color:#cfd6e1 ;"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end top nav -->
+
+    <!-- start navbar -->
+    <nav class="nav-bar">
+        <div class="nav_container">
+            <div class="nav_logo"><img src="imges/logo-removebg-preview.png" alt="" class="nav_logo"></div>
+            <div class="nav_category">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Contect</a></li>
+                </ul>
+            </div>
+            <div class="nav_funtional">
+                <ul class="nav_funtional-list">
+                    <li><a href="#"><i class="fa-solid fa-magnifying-glass" onclick="focussearchinput()"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-cart-shopping" onclick="showCart()"></i></a><span
+                            class="count" id="cart-count" style="display: none;">0</span></li>
+                    <li><a href="#"><i class="fa-solid fa-user"></i></a><span class="user">+99</span></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end navbar -->
+
+    <!-- content -->
+    <div class="container">
+        <div class="container-box">
+            <div class="sidebar_container">
+                <h3>Category</h3>
+                <div class="category-list">
+                    <ul>
+                        <li><a href="#" onclick="fillter('all')">All Product</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">Gender</a>
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down icon-sidebar"></i>
+                            <ul class="list">
+                                <li class="list-choose" onclick="fillter('men')">Men</li>
+                                <li class="list-choose" onclick="fillter('women')">Women</li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Sale</a>
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down icon-sidebar"></i>
+                            <ul class="list">
+                                <li class="list-choose">50%</li>
+                                <li class="list-choose">90%</li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Product</a>
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down icon-sidebar"></i>
+                            <ul class="list">
+                                <li class="list-choose" onclick="fillter('bag')">Bag</li>
+                                <li class="list-choose" onclick="fillter('shoes')">Shoes</li>
+                                <li class="list-choose" onclick="fillter('dress')">Dress</li>
+                                <li class="list-choose" onclick="fillter('accessories')">Accessories</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content_container">
+                <div class="header-content">
+                    <h1 class="header-title">All Products</h1>
+                    <div class="search-box">
+                        <input type="text" placeholder="Search" id="search" onkeyup="searchProduct(this)">
+                    </div>
+                </div>
+                <div class="content-box" id="content-box">
+                </div>
+            </div>
+        </div>
+        <div class="modal-container" id="modal-container"></div>
+
+        <div class="cart-container" style="display: none;" id="cart-container">
+            <div class="cart" id="cart">
+                <div class="cart-header">
+                    <img src="imges/logo-removebg-preview.png" alt="" class="nav_logo">
+                    <h1>Shooping Cart</h1>
+                    <i><i class="fa-solid fa-xmark" onclick="closeCart()"></i></i>
+                </div>
+                <div id="cart-item">
+                    <!-- <div class="card-item">
+                        <div class="cart-img">
+                            <img src="imges/product_single_08.jpg" alt="">
+                        </div>
+                        <div class="cart-info">
+                            <h2>Bag</h2>
+                            <h3>$100</h3>
+                        </div>
+                        <div class="cart-btn">
+                            <i class="fa-solid fa-minus minusbtn"></i>
+                            <div class="total-item"><span>1</span></div>
+                            <i class="fa-solid fa-plus plusbtn"></i>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="container-checkout">
+                    <span class="total-price">Total: <span class="total-price-amount"> $100</span></span>
+                    <button class="checkout-btn" onclick="goToCheckout()">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/caf89dfe33.js" crossorigin="anonymous"></script>
+    <script src="sciptforshoppage.js"></script>
+</body>
+
+</html>
